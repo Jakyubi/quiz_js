@@ -25,6 +25,22 @@
 
       <script>
 
+    const form = document.getElementById("formJson");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault(); // Zapobiega przekierowaniu strony po kliknięciu przycisku submit
+
+      const data = new FormData(form); // Tworzy obiekt FormData z danymi z formularza
+      const json = JSON.stringify(Object.fromEntries(data.entries())); // Konwertuje dane na obiekt JavaScript i następnie na łańcuch JSON
+
+      const link = document.createElement("a"); // Tworzy element linku
+      link.download = "dane.json"; // Ustawia atrybut download, aby nazwać plik jako "dane.json"
+      link.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); // Tworzy obiekt Blob z łańcuchem JSON i ustawia go jako URL linku
+      link.click(); // Symuluje kliknięcie linku
+
+      URL.revokeObjectURL(link.href); // Usuwa utworzony URL obiektu Blob, aby zwolnić pamięć
+    });
+
       </script>
 
 </body>
