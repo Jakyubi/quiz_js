@@ -32,13 +32,27 @@
   
   
   <div id="teams">   
-    <div id="team">Team1</div>
-    <div id="team">Team2</div>
-    <div id="team">Team3</div>
+    <div id="team1">Team1 <br> Punkty: <div id="pkt1"></div> </div>
+
+    <div id="team2">Team2 <br> Punkty: <div id="pkt2"></div></div>
+    
+    <div id="team3">Team3 <br> Punkty: <div id="pkt3"></div></div>
   </div>
   <input type="file" id="plik">
 
     <script> //wyswietla json na stronie
+
+
+
+      let x1 = 0;
+      let x2 = 0;
+      let x3 = 0;
+      
+      document.getElementById("team2").innerHTML += x2;
+      document.getElementById("team3").innerHTML += x3;
+
+
+
       const input = document.getElementById("plik");
       const question = document.getElementById("zawartosc");
       const ans1 = document.getElementById("first_ans");
@@ -55,23 +69,44 @@
           ans1.innerText = json.answer1;
           ans2.innerText = json.answer2;
           ans3.innerText = json.answer3;
+          document.getElementById("first_ans").addEventListener("click", function(){
+            
+            if(json.correctAnswer === "1"){
+              x1++;
+            }
+            document.getElementById("pkt1").innerHTML = x1;
+          });
+    
+          document.getElementById("second_ans").addEventListener("click", function(){
+            if(json.correctAnswer === "2"){
+              x1++;
+            }
+            document.getElementById("pkt1").innerHTML = x1;
+          });
+    
+          document.getElementById("third_ans").addEventListener("click", function(){
+            if(json.correctAnswer === "3"){
+              x1++;
+            }
+            document.getElementById("pkt1").innerHTML = x1;
+          });
         }
-
         reader.readAsText(plik);
       });
 
+      
 
     </script>
 
 
      <!-- 
-        ogarnąć jak wyświetlić json na stronie
+        ogarnąć jak wyświetlić json na stronie DONE
 
-        wyświetlić poszczególne elementy json w różnych divach
+        wyświetlić poszczególne elementy json w różnych divach DONE
 
         za pomocą przycisków wybierać różne jsony do wyświetlenia w taki sam sposób
 
-        ogarnąć jak rozróżniać poprawną odpowiedź
+        ogarnąć jak rozróżniać poprawną odpowiedź DONE
 
         przyznawać punkty za poprawną odpowiedź
 

@@ -26,16 +26,35 @@
     width: 400px;
     height: 350px;
     background-color: green;
+    display: flex;
+    flex-direction: column;
 }
 
 #teams{
     height: 200px;
     background-color: grey;
+    display: flex;
 }
 
-#team{
+#team1, #team2, #team3{
     border: solid black 1px;
     float: left;
-    width: 33%;
+    flex-grow: 1;
     height: 100%;
+    font-size: 32px ;
+    text-align: center;
+}
+
+
+#first_ans, #second_ans, #third_ans{
+    border: solid black 1px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    flex-grow: 1;
+
+}
+
+#zawartosc{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 64px;
 }
