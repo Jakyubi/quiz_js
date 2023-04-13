@@ -14,7 +14,14 @@
   
   
   <div id="first">
-    <div id="set"> </div>
+
+
+    <div id="set">
+      <button id="music-btn">Włącz/ <br> Wyłącz</button>
+      <audio id="music" src="Music.mp3" loop></audio>
+    </div>
+
+
     <div id="answers">
       <div id="first_ans"></div>  
       <div id="second_ans"></div>  
@@ -47,7 +54,7 @@
       let x1 = 0;
       let x2 = 0;
       let x3 = 0;
-      let qurentQuestionNumber = 0;
+      let qurentQuestionNumber = 1;
 
 
       let correctAnswer = null;
@@ -70,7 +77,10 @@
           ans1.innerText = json.answer1;
           ans2.innerText = json.answer2;
           ans3.innerText = json.answer3;
-          document.getElementById("first_ans").addEventListener("click", function(){
+
+
+
+          document.getElementById("first_ans").addEventListener("click", function(){ //first answer
             
             if(correctAnswer === "1"){
               if(qurentQuestionNumber % 3 === 1){
@@ -83,12 +93,12 @@
               x3++;
               document.getElementById("pkt3").innerHTML = x3;
               }
+              qurentQuestionNumber++;
             }
-            qurentQuestionNumber++;
 
           });
     
-          document.getElementById("second_ans").addEventListener("click", function(){
+          document.getElementById("second_ans").addEventListener("click", function(){ //second answer
             if(correctAnswer === "2"){
               if(qurentQuestionNumber % 3 === 1){
               x1++;
@@ -100,13 +110,13 @@
               x3++;
               document.getElementById("pkt3").innerHTML = x3;
               }
+              qurentQuestionNumber++;
             }
-            qurentQuestionNumber++;
 
           });
     
-          document.getElementById("third_ans").addEventListener("click", function(){
-            if(correctAnswer === "1"){
+          document.getElementById("third_ans").addEventListener("click", function(){ //third answer
+            if(correctAnswer === "3"){
               if(qurentQuestionNumber % 3 === 1){
               x1++;
               document.getElementById("pkt1").innerHTML = x1;
@@ -117,16 +127,35 @@
               x3++;
               document.getElementById("pkt3").innerHTML = x3;
               }
+              qurentQuestionNumber++;
             }
-            qurentQuestionNumber++;
           });
 
 
         }
         reader.readAsText(plik);
+
+        if(qurentQuestionNumber===3){
+          qurentQuestionNumber=1
+        }
       });
 
       
+
+
+
+      const music = document.getElementById("music");
+const musicBtn = document.getElementById("music-btn");
+
+musicBtn.addEventListener("click", () => {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = "Wyłącz muzykę";
+  } else {
+    music.pause();
+    musicBtn.textContent = "Włącz muzykę";
+  }
+});
 
     </script>
 
