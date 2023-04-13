@@ -6,19 +6,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>index</title>
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
 
+  
+  
+  
+  <div id="first">
+    <div id="set"> </div>
+    <div id="answers">
+      <div id="first_ans"></div>  
+      <div id="second_ans"></div>  
+      <div id="third_ans"></div>  
+    </div>
+    
+    <div id="question"> 
+      <div id="zawartosc"></div>
+    </div>
+    
+    
+    
+    <div id="numbers">1 2 3 4 </div>
+  </div>
+  
+  
+  <div id="teams">   
+    <div id="team">Team1</div>
+    <div id="team">Team2</div>
+    <div id="team">Team3</div>
+  </div>
+  <input type="file" id="plik">
 
-    <div id="first">
-        <div id="set"> </div>
-        <div id="answers"> </div>
+    <script> //wyswietla json na stronie
+      const input = document.getElementById("plik");
+      const question = document.getElementById("zawartosc");
+      const ans1 = document.getElementById("first_ans");
+      const ans2 = document.getElementById("second_ans");
+      const ans3 = document.getElementById("third_ans");
 
-         <div id="question"> </div>
-         <div id="numbers"> </div>
-        </div>
+      input.addEventListener("change", function() {
+        const plik = this.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+          const json = JSON.parse(e.target.result);
+          question.innerText = json.quest;
+          ans1.innerText = json.answer1;
+          ans2.innerText = json.answer2;
+          ans3.innerText = json.answer3;
+        }
+
+        reader.readAsText(plik);
+      });
 
 
-     <div id="teams">   </div>
+    </script>
+
+
+     <!-- 
+        ogarnąć jak wyświetlić json na stronie
+
+        wyświetlić poszczególne elementy json w różnych divach
+
+        za pomocą przycisków wybierać różne jsony do wyświetlenia w taki sam sposób
+
+        ogarnąć jak rozróżniać poprawną odpowiedź
+
+        przyznawać punkty za poprawną odpowiedź
+
+        
+     -->
+
 </body>
 </html>

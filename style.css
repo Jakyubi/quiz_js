@@ -32,3 +32,10 @@
     height: 200px;
     background-color: grey;
 }
+
+#team{
+    border: solid black 1px;
+    float: left;
+    width: 33%;
+    height: 100%;
+}
