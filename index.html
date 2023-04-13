@@ -47,12 +47,10 @@
       let x1 = 0;
       let x2 = 0;
       let x3 = 0;
-      
-      document.getElementById("team2").innerHTML += x2;
-      document.getElementById("team3").innerHTML += x3;
+      let qurentQuestionNumber = 0;
 
 
-
+      let correctAnswer = null;
       const input = document.getElementById("plik");
       const question = document.getElementById("zawartosc");
       const ans1 = document.getElementById("first_ans");
@@ -65,31 +63,65 @@
 
         reader.onload = function(e) {
           const json = JSON.parse(e.target.result);
+
+          correctAnswer = json.correctAnswer;
+
           question.innerText = json.quest;
           ans1.innerText = json.answer1;
           ans2.innerText = json.answer2;
           ans3.innerText = json.answer3;
           document.getElementById("first_ans").addEventListener("click", function(){
             
-            if(json.correctAnswer === "1"){
+            if(correctAnswer === "1"){
+              if(qurentQuestionNumber % 3 === 1){
               x1++;
+              document.getElementById("pkt1").innerHTML = x1;
+              }else if(qurentQuestionNumber % 3 === 2){
+              x2++;
+              document.getElementById("pkt2").innerHTML = x2;
+              }else {
+              x3++;
+              document.getElementById("pkt3").innerHTML = x3;
+              }
             }
-            document.getElementById("pkt1").innerHTML = x1;
+            qurentQuestionNumber++;
+
           });
     
           document.getElementById("second_ans").addEventListener("click", function(){
-            if(json.correctAnswer === "2"){
+            if(correctAnswer === "2"){
+              if(qurentQuestionNumber % 3 === 1){
               x1++;
+              document.getElementById("pkt1").innerHTML = x1;
+              }else if(qurentQuestionNumber % 3 === 2){
+              x2++;
+              document.getElementById("pkt2").innerHTML = x2;
+              }else {
+              x3++;
+              document.getElementById("pkt3").innerHTML = x3;
+              }
             }
-            document.getElementById("pkt1").innerHTML = x1;
+            qurentQuestionNumber++;
+
           });
     
           document.getElementById("third_ans").addEventListener("click", function(){
-            if(json.correctAnswer === "3"){
+            if(correctAnswer === "1"){
+              if(qurentQuestionNumber % 3 === 1){
               x1++;
+              document.getElementById("pkt1").innerHTML = x1;
+              }else if(qurentQuestionNumber % 3 === 2){
+              x2++;
+              document.getElementById("pkt2").innerHTML = x2;
+              }else {
+              x3++;
+              document.getElementById("pkt3").innerHTML = x3;
+              }
             }
-            document.getElementById("pkt1").innerHTML = x1;
+            qurentQuestionNumber++;
           });
+
+
         }
         reader.readAsText(plik);
       });
