@@ -31,19 +31,19 @@
     const form = document.getElementById("formJson");
 
     form.addEventListener("submit", function(event) {
-      event.preventDefault(); // Zapobiega przekierowaniu strony po kliknięciu przycisku submit
+      event.preventDefault(); // prevent default page redirection after clicking submit
 
-      const data = new FormData(form); // Tworzy obiekt FormData z danymi z formularza
-      const json = JSON.stringify(Object.fromEntries(data.entries())); // Konwertuje dane na obiekt JavaScript i następnie na łańcuch JSON
-      const CurrentDate = new Date();
+      const data = new FormData(form); // create object with data from form
+      const json = JSON.stringify(Object.fromEntries(data.entries())); // convert to js and then json
+      const CurrentDate = new Date(); //set file name to current date
       const fileName = `${CurrentDate.getFullYear()}-${CurrentDate.getMonth() + 1}-${CurrentDate.getDate()}-${CurrentDate.getHours()}-${CurrentDate.getMinutes()}-${CurrentDate.getSeconds()}.json`;
 
-      const link = document.createElement("a"); // Tworzy element linku
-      link.download = fileName; // Ustawia atrybut download, aby nazwać plik jako "aktualna-data.json"
-      link.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); // Tworzy obiekt Blob z łańcuchem JSON i ustawia go jako URL linku
-      link.click(); // Symuluje kliknięcie linku
+      const link = document.createElement("a"); 
+      link.download = fileName; 
+      link.href = URL.createObjectURL(new Blob([json], { type: "application/json" })); // create blob and set as url
+      link.click(); // simulate clicking link
 
-      URL.revokeObjectURL(link.href); // Usuwa utworzony URL obiektu Blob, aby zwolnić pamięć
+      URL.revokeObjectURL(link.href); // delete blob url
     });
 
       </script>

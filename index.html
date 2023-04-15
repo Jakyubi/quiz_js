@@ -7,172 +7,64 @@
     <title>index</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-</head>
-<body>
-
-  
-  
-  
-  <div id="first">
-
-
-    <div id="set">
-      <button id="music-btn">Włącz/ <br> Wyłącz</button>
-      <audio id="music" src="Music.mp3" loop></audio>
-    </div>
-
-
-    <div id="answers">
-      <div id="first_ans"></div>  
-      <div id="second_ans"></div>  
-      <div id="third_ans"></div>  
-    </div>
-    
-    <div id="question"> 
-      <div id="zawartosc"></div>
-    </div>
+  </head>
+  <body>
     
     
     
-    <div id="numbers">1 2 3 4 </div>
-  </div>
-  
-  
-  <div id="teams">   
-    <div id="team1">Team1 <br> Punkty: <div id="pkt1"></div> </div>
-
-    <div id="team2">Team2 <br> Punkty: <div id="pkt2"></div></div>
     
-    <div id="team3">Team3 <br> Punkty: <div id="pkt3"></div></div>
-  </div>
-  <input type="file" id="plik">
-
-    <script> //wyswietla json na stronie
-
-
-
-      let x1 = 0;
-      let x2 = 0;
-      let x3 = 0;
-      let qurentQuestionNumber = 1;
-
-
-      let correctAnswer = null;
-      const input = document.getElementById("plik");
-      const question = document.getElementById("zawartosc");
-      const ans1 = document.getElementById("first_ans");
-      const ans2 = document.getElementById("second_ans");
-      const ans3 = document.getElementById("third_ans");
-
-      input.addEventListener("change", function() {
-        const plik = this.files[0];
-        const reader = new FileReader();
-
-        reader.onload = function(e) {
-          const json = JSON.parse(e.target.result);
-
-          correctAnswer = json.correctAnswer;
-
-          question.innerText = json.quest;
-          ans1.innerText = json.answer1;
-          ans2.innerText = json.answer2;
-          ans3.innerText = json.answer3;
-
-
-
-          document.getElementById("first_ans").addEventListener("click", function(){ //first answer
-            
-            if(correctAnswer === "1"){
-              if(qurentQuestionNumber % 3 === 1){
-              x1++;
-              document.getElementById("pkt1").innerHTML = x1;
-              }else if(qurentQuestionNumber % 3 === 2){
-              x2++;
-              document.getElementById("pkt2").innerHTML = x2;
-              }else {
-              x3++;
-              document.getElementById("pkt3").innerHTML = x3;
-              }
-              qurentQuestionNumber++;
-            }
-
-          });
-    
-          document.getElementById("second_ans").addEventListener("click", function(){ //second answer
-            if(correctAnswer === "2"){
-              if(qurentQuestionNumber % 3 === 1){
-              x1++;
-              document.getElementById("pkt1").innerHTML = x1;
-              }else if(qurentQuestionNumber % 3 === 2){
-              x2++;
-              document.getElementById("pkt2").innerHTML = x2;
-              }else {
-              x3++;
-              document.getElementById("pkt3").innerHTML = x3;
-              }
-              qurentQuestionNumber++;
-            }
-
-          });
-    
-          document.getElementById("third_ans").addEventListener("click", function(){ //third answer
-            if(correctAnswer === "3"){
-              if(qurentQuestionNumber % 3 === 1){
-              x1++;
-              document.getElementById("pkt1").innerHTML = x1;
-              }else if(qurentQuestionNumber % 3 === 2){
-              x2++;
-              document.getElementById("pkt2").innerHTML = x2;
-              }else {
-              x3++;
-              document.getElementById("pkt3").innerHTML = x3;
-              }
-              qurentQuestionNumber++;
-            }
-          });
-
-
-        }
-        reader.readAsText(plik);
-
-        if(qurentQuestionNumber===3){
-          qurentQuestionNumber=1
-        }
-      });
-
+    <div id="first">
       
+      
+      <div id="set">
+        <button id="music-btn">Włącz/ <br> Wyłącz</button>
+        <audio id="music" src="Music.mp3" loop></audio>
+      </div>
+      
+      
+      <div id="answers">
+        <div id="first_ans"></div>  
+        <div id="second_ans"></div>  
+        <div id="third_ans"></div>  
+      </div>
+      
+      <div id="question"> 
+        <div id="zawartosc"></div>
+      </div>
+      
+      
+      
+      <div id="numbers">1 2 3 4 </div>
+    </div>
+    
+    
+    <div id="teams">   
+      <div id="team1">Team1 <br> Punkty: <div id="pkt1"></div> </div>
+      
+      <div id="team2">Team2 <br> Punkty: <div id="pkt2"></div></div>
+      
+      <div id="team3">Team3 <br> Punkty: <div id="pkt3"></div></div>
+    </div>
+    
+    <div id="who"></div><br><br>
+    <input type="file" id="plik">
+    
 
-
-
-      const music = document.getElementById("music");
-const musicBtn = document.getElementById("music-btn");
-
-musicBtn.addEventListener("click", () => {
-  if (music.paused) {
-    music.play();
-    musicBtn.textContent = "Wyłącz muzykę";
-  } else {
-    music.pause();
-    musicBtn.textContent = "Włącz muzykę";
-  }
-});
-
-    </script>
-
+<script src="script.js"></script>
 
      <!-- 
-        ogarnąć jak wyświetlić json na stronie DONE
-
-        wyświetlić poszczególne elementy json w różnych divach DONE
-
-        za pomocą przycisków wybierać różne jsony do wyświetlenia w taki sam sposób
-
-        ogarnąć jak rozróżniać poprawną odpowiedź DONE
-
-        przyznawać punkty za poprawną odpowiedź
-
-        
-     -->
-
-</body>
-</html>
+       ogarnąć jak wyświetlić json na stronie DONE
+       
+       wyświetlić poszczególne elementy json w różnych divach DONE
+       
+       za pomocą przycisków wybierać różne jsony do wyświetlenia w taki sam sposób
+       
+       ogarnąć jak rozróżniać poprawną odpowiedź DONE
+       
+       przyznawać punkty za poprawną odpowiedź
+       
+       
+      -->
+      
+    </body>
+    </html>
